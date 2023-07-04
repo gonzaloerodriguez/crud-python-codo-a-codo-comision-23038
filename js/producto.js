@@ -38,8 +38,8 @@ createApp({
       fetch(url, options)
         .then((res) => res.text()) // or res.json()
         .then((res) => {
-          alert("Registro Eliminado");
-          location.reload(); // recarga el json luego de eliminado el registro
+          swal("Producto eliminado", "", "success");
+          setTimeout(() => location.reload(), 3000);
         });
     },
     grabar() {
@@ -57,8 +57,8 @@ createApp({
       };
       fetch(this.url, options)
         .then(function () {
-          alert("Registro grabado");
-          window.location.href = "./productos.html"; // recarga productos.html
+          swal("Producto creado exitosamente", "", "success");
+          setTimeout(() => (window.location.href = "./productos.html"), 3000);
         })
         .catch((err) => {
           console.error(err);

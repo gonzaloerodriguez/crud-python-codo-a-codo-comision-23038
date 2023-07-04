@@ -43,12 +43,12 @@ createApp({
       };
       fetch(this.url, options)
         .then(function () {
-          alert("Registro grabado");
-          window.location.href = "./productos.html"; // recarga productos.html
+          swal("Producto creado exitosamente", "", "success");
+          setTimeout(() => (window.location.href = "./productos.html"), 3000);
         })
         .catch((err) => {
           console.error(err);
-          alert("Error al Grabar"); // puedo mostrar el error tambien
+          alert("Error al Grabar");
         });
     },
   },

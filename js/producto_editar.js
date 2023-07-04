@@ -45,8 +45,8 @@ createApp({
       };
       fetch(this.url, options)
         .then(function () {
-          alert("Registro modificado");
-          window.location.href = "./productos.html";
+          swal("Registro grabado", "", "success");
+          setTimeout(() => (window.location.href = "./productos.html"), 3000);
         })
         .catch((err) => {
           console.error(err);
