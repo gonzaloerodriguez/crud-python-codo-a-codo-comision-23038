@@ -32,15 +32,26 @@ createApp({
     },
     eliminar(id) {
       const url = this.url + "/" + id;
-      var options = {
-        method: "DELETE",
-      };
-      fetch(url, options)
-        .then((res) => res.text()) // or res.json()
-        .then((res) => {
-          swal("Producto eliminado", "", "success");
-          setTimeout(() => location.reload(), 3000);
-        });
+
+      swal({
+        title: "¿Estás seguro?",
+        text: "Esta acción no se puede deshacer",
+        icon: "warning",
+        buttons: ["Cancelar", "Eliminar"],
+        dangerMode: true,
+      }).then((confirm) => {
+        if (confirm) {
+          var options = {
+            method: "DELETE",
+          };
+          fetch(url, options)
+            .then((res) => res.text())
+            .then((res) => {
+              swal("Producto eliminado", "", "success");
+              setTimeout(() => location.reload(), 3000);
+            });
+        }
+      });
     },
     grabar() {
       let producto = {
